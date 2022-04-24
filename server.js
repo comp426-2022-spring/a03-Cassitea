@@ -32,8 +32,6 @@ app.get('/app/', (req, res) => {
     res.type('text/plain')
 });
 
-
-
 // TODO: Endpoints
 
 app.get('/app/flip/', (req, res) => {
@@ -41,7 +39,7 @@ app.get('/app/flip/', (req, res) => {
     res.status(200).json({'flip' : coinFlip()})
 });
 
-app.get('/app/flip/:number', (req, res) => {
+app.get('/app/flips/:number', (req, res) => {
     const flips = coinFlips(req.params.number);
     const count = countFlips(flips);
     res.status(200).json({'raw': flips, 'summary': count})
