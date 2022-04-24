@@ -2,9 +2,9 @@
 const express = require('express')
 const app = express()
 
-const args = require('minimist')(process.argv.slice(2));
+const args = require('minimist')(process.argv.slice(2))
 args['port']
-const HTTP_PORT = args.port || 5000  || process.env.PORT
+const HTTP_PORT = args.port || 5000 || process.env.PORT
 
 // Start an app server
 const server = app.listen(HTTP_PORT, () => {
@@ -32,10 +32,7 @@ app.get('/app/', (req, res) => {
     res.type('text/plain')
 });
 
-app.use(function (req, res) {
-    res.status(404).end('404 NOT FOUND')
-    res.type('text/plain')
-})
+
 
 // TODO: Endpoints
 
@@ -56,6 +53,11 @@ app.get('/app/flip/call/heads', (req, res) => {
 
 app.get('/app/flip/call/tails', (req, res) => {
     res.status(200).json(flipACoin("tails"))
+});
+
+app.use(function (req, res) {
+    res.status(404).end('404 NOT FOUND')
+    res.type('text/plain')
 });
 
 
