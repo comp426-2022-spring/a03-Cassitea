@@ -12,22 +12,22 @@ const server = app.listen(HTTP_PORT, () => {
 });
 
 // Default response for any other request
-
+/*
 app.use(function(req, res){
     res.status(404).send('404 NOT FOUND')
-}); 
+}); */
 
-app.get('/app/', (req, res) => {
+/*app.get('/app/', (req, res) => {
     // Respond with status 200
         res.statusCode = 200;
     // Respond with status message "OK"
         res.statusMessage = 'OK';
         res.writeHead( res.statusCode, { 'Content-Type' : 'text/plain' });
         res.end(res.statusCode+ ' ' +res.statusMessage)
-    });
+    });*/
 
 // Simplified of the given one
-/*app.get('/app/', (req, res) => {
+app.get('/app/', (req, res) => {
     res.status(200).end('OK')
     res.type('text/plain')
 });
@@ -35,7 +35,7 @@ app.get('/app/', (req, res) => {
 app.use(function (req, res) {
     res.status(404).end('404 NOT FOUND')
     res.type('text/plain')
-})*/
+})
 
 // TODO: Endpoints
 
