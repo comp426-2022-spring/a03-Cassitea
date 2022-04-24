@@ -26,8 +26,6 @@ app.use(function(req, res){
         res.end(res.statusCode+ ' ' +res.statusMessage)
     });*/
 
-// TODO: Endpoints
-
 // Simplified of the given one
 app.get('/app/', (req, res) => {
     res.status(200).end('OK')
@@ -39,8 +37,26 @@ app.use(function (req, res) {
     res.type('text/plain')
 })
 
+// TODO: Endpoints
 
+app.get('/app/flip/', (req, res) => {
+    const flip = coinFlip();
+    res.status(200).json({'flip' : coinFlip()})
+});
 
+app.get('/app/flip/:number', (req, res) => {
+    const flips = coinFlips(req.params.number);
+    const count = countFlips(flips);
+    res.status(200).json({'raw': flips, 'summary': count})
+});
+
+app.get('/app/flip/call/heads', (req, res) => {
+    res.status(200).json(flipACoin("heads"))
+});
+
+app.get('/app/flip/call/tails', (req, res) => {
+    res.status(200).json(flipACoin("tails"))
+});
 
 
 // Coin functions from a02
